@@ -1,0 +1,28 @@
+version: '3'
+services:
+  log-mointor-db:
+    image: postgres:13-alpine
+    #container_name: log-mointor-db
+    restart: always
+    # volumes:
+    #   - ./postgresql/data:/var/lib/postgresql/data
+    ports:
+      - 5442:5432
+    environment:
+      POSTGRES_USER: 'rssadmin'
+      POSTGRES_PASSWORD: '1234'
+      POSTGRES_DB: 'logdb'
+      TZ: 'Asia/Seoul'
+  rapid-collector-db:
+    image: postgres:13-alpine
+    container_name: postgresql
+    restart: always
+    # volumes:
+    #   - ./postgresql/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: 'rssuser'
+      POSTGRES_PASSWORD: 'rssuser'
+      POSTGRES_DB: 'logdb'
+      TZ: 'Asia/Seoul'
